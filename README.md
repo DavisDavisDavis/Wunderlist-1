@@ -12,36 +12,18 @@ Or download this repository and launch a localhost to run it locally on your mac
 
 # Code Review
 
-Code review written by [DavisDavisDavis](https://github.com/DavisDavisDavis).
+Code review written by [Amanda Hultén](https://github.com/amandahulten).
 
-1. `update.php` - A lot of the '$statment->execute()' are repeated. Intead by using 'if' statements to check what 'post items' have been set it possible to only updating the coloumn that are in use ('isset'). E.g 
-
-   'if (isset($_POST['title'])) {
-      $statement->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
-    }'
-    
-2. `index.php:8` - Some issues with 'successMsg' It will give an error each time it's called. 📝
-
-'Warning: Undefined variable $successMsg in /Users/macbook/Documents/GitHub/useless_website/Wunderlist-1/index.php on line 8
-You are now logged out.'
-
-3. `wunderlist.php` - A lot of divs could be replaces with html sematics or completely removed and combined into a single div; however I'm not fammiliar with bootstrap which might be the explanation for the amount of divs.
-
-4. `wunderlistold.sqlite` - Just an old database. 📀🐱
-
-5. `functions.js:5-9` - The functions that does't use 'return' could be set with the 'void' type declaration
-
-6. `wunderlist.js` - All of the constants and comments at the beggining are a bit overwhelming 😵‍💫 and could either be split up into different files or the constants could be set above the respective functions that they will be used for. 
-
-7. `account.php:64-65` - SVG could be saved in it's own file and saved in the images folder
-
-8. `updateaccount.php:10-15` - As of now it is possible to upload pictures of any size as an avatar which probably should have a limit. 📸
-
-9. `wunderlist` - All of the file names are in lowercase and for readability it would be better to use cammelCase or snake_case.
-
-10. `wunderlist.php` - It is possible to get an error code inside of the task description... 
-
-'Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /Users/macbook/Documents/GitHub/useless_website/Wunderlist-1/wunderlists.php on line 357'
+1. `store.php` - Instead of having the queries for tasks and lists in the same file, you could divide them into seperate files under seperate folders for a better structure. 
+2. `wunderlist.js` - Your JS file is full of information and comments, I would recommend to divide the code into different files for better readability. 
+3. `uploads` - You can move your uploads file to .gitignore since you only have it to store information. 
+4. `users- all files` - You don't need to write "else" in your if statements. Your redirect will end the statement if fulfilled and otherwise jump to the next line of code.
+5. `wunderlist.php` - You could set a maxlength on your task-inputs to prevent the user from writing long titles or descriptions that would affect your styling.
+6. `wunderlist.php` - Your class-names are a bit general in parts of your code, for example container and row. I would recommend to name them more specificly even if they have the same styling, to get a better understanding of your css-file. 
+7. `store.php` - As a user I would prefer to choose whether I want a descriptions on my tasks or not.
+8. `app/` - You don't need to write FILTER_SANITIZE_STRING on your php variables since you use htmlspecialchars.
+9. `wunderlist.js` - Commented code is to prefer, but all the comments when getting elements seems a bit unnecessary. Good variable-names is enough (which you have).
+10. `overall` - Really good job with your error and success-messages, you keep the user updated at all times! Overall a really good site!
 
 # Testers
 
